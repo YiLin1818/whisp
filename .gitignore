@@ -5,6 +5,17 @@ __pycache__/
 .pytest_cache
 .ipynb_checkpoints
 
+# Checkpoints - DO NOT COMMIT
+checkpoints/
+*.pth
+*.ckpt
+*.pt
+
+# Logs
+logs/
+slurm_logs/
+*.out
+
 thumbs.db
 .DS_Store
 .idea
