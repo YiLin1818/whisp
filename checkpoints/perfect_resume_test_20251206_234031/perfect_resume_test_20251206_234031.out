@@ -1,0 +1,429 @@
+==========================================
+Started at Sat Dec  6 11:40:33 PM EST 2025
+Experiment: perfect_resume_test_20251206_234031
+Checkpoint: ./checkpoints/perfect_resume_test_20251206_234031
+==========================================
+Config file: configs/base_lora.yaml
+Number of override args: 34
+✓ Loaded config from configs/base_lora.yaml
+Applying 17 overrides:
+  TSV_PATH = ./logs/perfect_resume_test_20251206_234031_log.tsv
+  CHECKPOINT_DIR = ./checkpoints/perfect_resume_test_20251206_234031
+  EXP_NAME = perfect_resume_test_20251206_234031
+  MODEL.BASE = small.en
+  LORA.RANK = 64
+  LORA.ALPHA = 128
+  LORA.DROPOUT = 0.1
+  LORA.TARGET_BLOCKS = 0-23
+  TRAIN_DATASETS.0.name = commonvoice
+  TRAIN_DATASETS.0.split = train[:30000]
+  VALIDATION_DATASETS.0.name = commonvoice
+  VALIDATION_DATASETS.0.split = train[30000:35000]
+  TRAINER.BATCH_SIZE = 8
+  TRAINER.ACCUMULATION_STEPS = 4
+  TRAINER.MAX_EPOCHS = 8
+  TRAINER.EARLY_STOPPING_PATIENCE = 3
+  TRAINER.LR = 1e-5
+
+
+Model: small.en
+LoRA: rank=64, alpha=128
+Training: 1 datasets, batch_size=8
+
+Set Whisper dims → n_mels=80, n_audio_ctx=1500, input_frames=3000
+Loading commonvoice train[:30000]...
+Loading ASR-Alignment subset 'commonvoice' split 'train[:30000]'...
+Sample 0: audio shape torch.Size([89856]), words 8
+  {'start': 0.0, 'end': 0.8023, 'word': 'The'}
+  {'start': 0.8023, 'end': 1.1433, 'word': 'track'}
+  {'start': 1.1433, 'end': 1.7651, 'word': 'appears'}
+  {'start': 1.7651, 'end': 1.9255, 'word': 'on'}
+  {'start': 1.9255, 'end': 2.0459, 'word': 'the'}
+Sample 1: audio shape torch.Size([119424]), words 14
+  {'start': 0.0, 'end': 0.6421, 'word': 'The'}
+  {'start': 0.6421, 'end': 1.6453, 'word': 'Massachusetts'}
+  {'start': 1.6453, 'end': 2.147, 'word': 'Division'}
+  {'start': 2.147, 'end': 2.3075, 'word': 'of'}
+  {'start': 2.3075, 'end': 2.9696, 'word': 'Fisheries'}
+Sample 2: audio shape torch.Size([120192]), words 12
+  {'start': 0.0, 'end': 0.9416, 'word': 'The'}
+  {'start': 0.9416, 'end': 1.3422, 'word': 'most'}
+  {'start': 1.3422, 'end': 1.7629, 'word': 'common'}
+  {'start': 1.7629, 'end': 2.2837, 'word': 'playing'}
+  {'start': 2.2837, 'end': 3.0049, 'word': 'format'}
+Created 276944 valid examples from 30000 samples
+Loading commonvoice train[30000:35000]...
+Loading ASR-Alignment subset 'commonvoice' split 'train[30000:35000]'...
+Sample 0: audio shape torch.Size([135936]), words 14
+  {'start': 0.0, 'end': 1.5029, 'word': 'Upon'}
+  {'start': 1.5029, 'end': 2.124, 'word': 'opening,'}
+  {'start': 2.124, 'end': 2.4647, 'word': 'the'}
+  {'start': 2.4647, 'end': 3.0859, 'word': 'nearby'}
+  {'start': 3.0859, 'end': 3.8072, 'word': 'Smethwick'}
+Sample 1: audio shape torch.Size([110592]), words 13
+  {'start': 0.0, 'end': 1.4225, 'word': 'His'}
+  {'start': 1.4225, 'end': 1.7431, 'word': 'books'}
+  {'start': 1.7431, 'end': 2.0035, 'word': 'have'}
+  {'start': 2.0035, 'end': 2.5244, 'word': 'been'}
+  {'start': 2.5244, 'end': 2.8049, 'word': 'both'}
+Sample 2: audio shape torch.Size([137472]), words 11
+  {'start': 0.0, 'end': 1.7425, 'word': 'The'}
+  {'start': 1.7425, 'end': 2.6838, 'word': 'unincorporated'}
+  {'start': 2.6838, 'end': 3.2246, 'word': 'community'}
+  {'start': 3.2246, 'end': 3.3848, 'word': 'of'}
+  {'start': 3.3848, 'end': 3.6251, 'word': 'Two'}
+Created 46763 valid examples from 5000 samples
+Loading Whisper model: small.en
+Trainer initialized with gradient accumulation steps: 4
+  → Effective batch size: 32
+  Batch 100/34618 (effective: 25): loss=6.5287, acc=0.3677 | 6.4 batch/s | ETA: 89.9m
+  Batch 200/34618 (effective: 50): loss=5.6239, acc=0.3891 | 12.6 batch/s | ETA: 45.4m
+  Batch 300/34618 (effective: 75): loss=5.1503, acc=0.3997 | 12.5 batch/s | ETA: 45.6m
+  Batch 400/34618 (effective: 100): loss=4.8714, acc=0.4081 | 12.5 batch/s | ETA: 45.6m
+  Batch 500/34618 (effective: 125): loss=4.7199, acc=0.4110 | 12.5 batch/s | ETA: 45.5m
+  Batch 600/34618 (effective: 150): loss=4.5925, acc=0.4159 | 12.5 batch/s | ETA: 45.4m
+  Batch 700/34618 (effective: 175): loss=4.5078, acc=0.4183 | 12.5 batch/s | ETA: 45.2m
+  Batch 800/34618 (effective: 200): loss=4.4362, acc=0.4209 | 12.5 batch/s | ETA: 45.0m
+  Batch 900/34618 (effective: 225): loss=4.3724, acc=0.4224 | 12.6 batch/s | ETA: 44.8m
+  Batch 1000/34618 (effective: 250): loss=4.3225, acc=0.4245 | 12.6 batch/s | ETA: 44.6m
+  Batch 1100/34618 (effective: 275): loss=4.2837, acc=0.4261 | 12.6 batch/s | ETA: 44.4m
+  Batch 1200/34618 (effective: 300): loss=4.2457, acc=0.4278 | 12.6 batch/s | ETA: 44.2m
+  Batch 1300/34618 (effective: 325): loss=4.2092, acc=0.4295 | 12.6 batch/s | ETA: 44.1m
+  Batch 1400/34618 (effective: 350): loss=4.1743, acc=0.4313 | 12.6 batch/s | ETA: 43.9m
+  Batch 1500/34618 (effective: 375): loss=4.1407, acc=0.4332 | 12.6 batch/s | ETA: 43.8m
+  Batch 1600/34618 (effective: 400): loss=4.1130, acc=0.4345 | 12.6 batch/s | ETA: 43.7m
+  Batch 1700/34618 (effective: 425): loss=4.0867, acc=0.4366 | 12.6 batch/s | ETA: 43.5m
+  Batch 1800/34618 (effective: 450): loss=4.0638, acc=0.4388 | 12.6 batch/s | ETA: 43.4m
+  Batch 1900/34618 (effective: 475): loss=4.0402, acc=0.4407 | 12.6 batch/s | ETA: 43.2m
+  Batch 2000/34618 (effective: 500): loss=4.0176, acc=0.4422 | 12.6 batch/s | ETA: 43.1m
+  Batch 2100/34618 (effective: 525): loss=3.9963, acc=0.4436 | 12.6 batch/s | ETA: 43.0m
+  Batch 2200/34618 (effective: 550): loss=3.9794, acc=0.4450 | 12.6 batch/s | ETA: 42.8m
+  Batch 2300/34618 (effective: 575): loss=3.9608, acc=0.4464 | 12.6 batch/s | ETA: 42.7m
+  Batch 2400/34618 (effective: 600): loss=3.9413, acc=0.4479 | 12.6 batch/s | ETA: 42.6m
+  Batch 2500/34618 (effective: 625): loss=3.9197, acc=0.4493 | 12.6 batch/s | ETA: 42.4m
+  Batch 2600/34618 (effective: 650): loss=3.9004, acc=0.4508 | 12.6 batch/s | ETA: 42.3m
+  Batch 2700/34618 (effective: 675): loss=3.8838, acc=0.4519 | 12.6 batch/s | ETA: 42.2m
+  Batch 2800/34618 (effective: 700): loss=3.8657, acc=0.4529 | 12.6 batch/s | ETA: 42.1m
+  Batch 2900/34618 (effective: 725): loss=3.8477, acc=0.4539 | 12.6 batch/s | ETA: 41.9m
+  Batch 3000/34618 (effective: 750): loss=3.8343, acc=0.4544 | 12.6 batch/s | ETA: 41.8m
+  Batch 3100/34618 (effective: 775): loss=3.8166, acc=0.4553 | 12.6 batch/s | ETA: 41.7m
+  Batch 3200/34618 (effective: 800): loss=3.8013, acc=0.4563 | 12.6 batch/s | ETA: 41.5m
+  Batch 3300/34618 (effective: 825): loss=3.7815, acc=0.4579 | 12.6 batch/s | ETA: 41.4m
+  Batch 3400/34618 (effective: 850): loss=3.7643, acc=0.4591 | 12.6 batch/s | ETA: 41.3m
+  Batch 3500/34618 (effective: 875): loss=3.7512, acc=0.4602 | 12.6 batch/s | ETA: 41.1m
+  Batch 3600/34618 (effective: 900): loss=3.7356, acc=0.4612 | 12.6 batch/s | ETA: 41.0m
+  Batch 3700/34618 (effective: 925): loss=3.7203, acc=0.4620 | 12.6 batch/s | ETA: 40.9m
+  Batch 3800/34618 (effective: 950): loss=3.7065, acc=0.4629 | 12.6 batch/s | ETA: 40.8m
+  Batch 3900/34618 (effective: 975): loss=3.6963, acc=0.4635 | 12.6 batch/s | ETA: 40.6m
+  Batch 4000/34618 (effective: 1000): loss=3.6828, acc=0.4643 | 12.6 batch/s | ETA: 40.5m
+  Batch 4100/34618 (effective: 1025): loss=3.6691, acc=0.4652 | 12.6 batch/s | ETA: 40.4m
+  Batch 4200/34618 (effective: 1050): loss=3.6571, acc=0.4658 | 12.6 batch/s | ETA: 40.2m
+  Batch 4300/34618 (effective: 1075): loss=3.6461, acc=0.4665 | 12.6 batch/s | ETA: 40.1m
+  Batch 4400/34618 (effective: 1100): loss=3.6357, acc=0.4671 | 12.6 batch/s | ETA: 40.0m
+  Batch 4500/34618 (effective: 1125): loss=3.6231, acc=0.4677 | 12.6 batch/s | ETA: 39.8m
+  Batch 4600/34618 (effective: 1150): loss=3.6112, acc=0.4683 | 12.6 batch/s | ETA: 39.7m
+  Batch 4700/34618 (effective: 1175): loss=3.6008, acc=0.4688 | 12.6 batch/s | ETA: 39.5m
+  Batch 4800/34618 (effective: 1200): loss=3.5906, acc=0.4697 | 12.6 batch/s | ETA: 39.4m
+  Batch 4900/34618 (effective: 1225): loss=3.5817, acc=0.4701 | 12.6 batch/s | ETA: 39.3m
+  Batch 5000/34618 (effective: 1250): loss=3.5700, acc=0.4708 | 12.6 batch/s | ETA: 39.1m
+  Batch 5100/34618 (effective: 1275): loss=3.5595, acc=0.4714 | 12.6 batch/s | ETA: 39.0m
+  Batch 5200/34618 (effective: 1300): loss=3.5498, acc=0.4721 | 12.6 batch/s | ETA: 38.9m
+  Batch 5300/34618 (effective: 1325): loss=3.5415, acc=0.4727 | 12.6 batch/s | ETA: 38.7m
+  Batch 5400/34618 (effective: 1350): loss=3.5326, acc=0.4734 | 12.6 batch/s | ETA: 38.6m
+  Batch 5500/34618 (effective: 1375): loss=3.5240, acc=0.4738 | 12.6 batch/s | ETA: 38.5m
+  Batch 5600/34618 (effective: 1400): loss=3.5138, acc=0.4744 | 12.6 batch/s | ETA: 38.3m
+  Batch 5700/34618 (effective: 1425): loss=3.5057, acc=0.4748 | 12.6 batch/s | ETA: 38.2m
+  Batch 5800/34618 (effective: 1450): loss=3.4961, acc=0.4756 | 12.6 batch/s | ETA: 38.0m
+  Batch 5900/34618 (effective: 1475): loss=3.4886, acc=0.4758 | 12.6 batch/s | ETA: 37.9m
+  Batch 6000/34618 (effective: 1500): loss=3.4797, acc=0.4766 | 12.6 batch/s | ETA: 37.8m
+  Batch 6100/34618 (effective: 1525): loss=3.4713, acc=0.4771 | 12.6 batch/s | ETA: 37.6m
+  Batch 6200/34618 (effective: 1550): loss=3.4632, acc=0.4777 | 12.6 batch/s | ETA: 37.5m
+  Batch 6300/34618 (effective: 1575): loss=3.4551, acc=0.4782 | 12.6 batch/s | ETA: 37.4m
+  Batch 6400/34618 (effective: 1600): loss=3.4468, acc=0.4788 | 12.6 batch/s | ETA: 37.2m
+  Batch 6500/34618 (effective: 1625): loss=3.4407, acc=0.4791 | 12.6 batch/s | ETA: 37.1m
+  Batch 6600/34618 (effective: 1650): loss=3.4334, acc=0.4794 | 12.6 batch/s | ETA: 37.0m
+  Batch 6700/34618 (effective: 1675): loss=3.4253, acc=0.4800 | 12.6 batch/s | ETA: 36.9m
+  Batch 6800/34618 (effective: 1700): loss=3.4187, acc=0.4804 | 12.6 batch/s | ETA: 36.7m
+  Batch 6900/34618 (effective: 1725): loss=3.4132, acc=0.4808 | 12.6 batch/s | ETA: 36.6m
+  Batch 7000/34618 (effective: 1750): loss=3.4048, acc=0.4816 | 12.6 batch/s | ETA: 36.5m
+  Batch 7100/34618 (effective: 1775): loss=3.3993, acc=0.4819 | 12.6 batch/s | ETA: 36.4m
+  Batch 7200/34618 (effective: 1800): loss=3.3925, acc=0.4825 | 12.6 batch/s | ETA: 36.2m
+  Batch 7300/34618 (effective: 1825): loss=3.3852, acc=0.4829 | 12.6 batch/s | ETA: 36.1m
+  Batch 7400/34618 (effective: 1850): loss=3.3782, acc=0.4834 | 12.6 batch/s | ETA: 36.0m
+  Batch 7500/34618 (effective: 1875): loss=3.3734, acc=0.4836 | 12.6 batch/s | ETA: 35.9m
+  Batch 7600/34618 (effective: 1900): loss=3.3688, acc=0.4839 | 12.6 batch/s | ETA: 35.8m
+  Batch 7700/34618 (effective: 1925): loss=3.3632, acc=0.4842 | 12.6 batch/s | ETA: 35.6m
+  Batch 7800/34618 (effective: 1950): loss=3.3574, acc=0.4847 | 12.6 batch/s | ETA: 35.5m
+  Batch 7900/34618 (effective: 1975): loss=3.3521, acc=0.4850 | 12.6 batch/s | ETA: 35.4m
+  Batch 8000/34618 (effective: 2000): loss=3.3481, acc=0.4852 | 12.6 batch/s | ETA: 35.3m
+  Batch 8100/34618 (effective: 2025): loss=3.3434, acc=0.4856 | 12.6 batch/s | ETA: 35.1m
+  Batch 8200/34618 (effective: 2050): loss=3.3387, acc=0.4860 | 12.6 batch/s | ETA: 35.0m
+  Batch 8300/34618 (effective: 2075): loss=3.3330, acc=0.4863 | 12.6 batch/s | ETA: 34.9m
+  Batch 8400/34618 (effective: 2100): loss=3.3276, acc=0.4869 | 12.6 batch/s | ETA: 34.7m
+  Batch 8500/34618 (effective: 2125): loss=3.3245, acc=0.4871 | 12.6 batch/s | ETA: 34.6m
+  Batch 8600/34618 (effective: 2150): loss=3.3197, acc=0.4874 | 12.6 batch/s | ETA: 34.4m
+  Batch 8700/34618 (effective: 2175): loss=3.3148, acc=0.4877 | 12.6 batch/s | ETA: 34.3m
+  Batch 8800/34618 (effective: 2200): loss=3.3106, acc=0.4880 | 12.6 batch/s | ETA: 34.2m
+  Batch 8900/34618 (effective: 2225): loss=3.3048, acc=0.4885 | 12.6 batch/s | ETA: 34.0m
+  Batch 9000/34618 (effective: 2250): loss=3.2999, acc=0.4889 | 12.6 batch/s | ETA: 33.9m
+  Batch 9100/34618 (effective: 2275): loss=3.2959, acc=0.4892 | 12.6 batch/s | ETA: 33.8m
+  Batch 9200/34618 (effective: 2300): loss=3.2914, acc=0.4894 | 12.6 batch/s | ETA: 33.6m
+  Batch 9300/34618 (effective: 2325): loss=3.2868, acc=0.4896 | 12.6 batch/s | ETA: 33.5m
+  Batch 9400/34618 (effective: 2350): loss=3.2812, acc=0.4900 | 12.6 batch/s | ETA: 33.4m
+  Batch 9500/34618 (effective: 2375): loss=3.2768, acc=0.4903 | 12.6 batch/s | ETA: 33.2m
+  Batch 9600/34618 (effective: 2400): loss=3.2730, acc=0.4905 | 12.6 batch/s | ETA: 33.1m
+  Batch 9700/34618 (effective: 2425): loss=3.2698, acc=0.4906 | 12.6 batch/s | ETA: 32.9m
+  Batch 9800/34618 (effective: 2450): loss=3.2650, acc=0.4910 | 12.6 batch/s | ETA: 32.8m
+  Batch 9900/34618 (effective: 2475): loss=3.2602, acc=0.4912 | 12.6 batch/s | ETA: 32.7m
+  Batch 10000/34618 (effective: 2500): loss=3.2553, acc=0.4915 | 12.6 batch/s | ETA: 32.6m
+  Batch 10100/34618 (effective: 2525): loss=3.2502, acc=0.4920 | 12.6 batch/s | ETA: 32.4m
+  Batch 10200/34618 (effective: 2550): loss=3.2464, acc=0.4923 | 12.6 batch/s | ETA: 32.3m
+  Batch 10300/34618 (effective: 2575): loss=3.2428, acc=0.4925 | 12.6 batch/s | ETA: 32.2m
+  Batch 10400/34618 (effective: 2600): loss=3.2391, acc=0.4927 | 12.6 batch/s | ETA: 32.0m
+  Batch 10500/34618 (effective: 2625): loss=3.2350, acc=0.4931 | 12.6 batch/s | ETA: 31.9m
+  Batch 10600/34618 (effective: 2650): loss=3.2312, acc=0.4934 | 12.6 batch/s | ETA: 31.8m
+  Batch 10700/34618 (effective: 2675): loss=3.2271, acc=0.4937 | 12.6 batch/s | ETA: 31.6m
+  Batch 10800/34618 (effective: 2700): loss=3.2239, acc=0.4939 | 12.6 batch/s | ETA: 31.5m
+  Batch 10900/34618 (effective: 2725): loss=3.2203, acc=0.4941 | 12.6 batch/s | ETA: 31.4m
+  Batch 11000/34618 (effective: 2750): loss=3.2168, acc=0.4943 | 12.6 batch/s | ETA: 31.2m
+  Batch 11100/34618 (effective: 2775): loss=3.2133, acc=0.4946 | 12.6 batch/s | ETA: 31.1m
+  Batch 11200/34618 (effective: 2800): loss=3.2105, acc=0.4948 | 12.6 batch/s | ETA: 31.0m
+  Batch 11300/34618 (effective: 2825): loss=3.2072, acc=0.4950 | 12.6 batch/s | ETA: 30.8m
+  Batch 11400/34618 (effective: 2850): loss=3.2039, acc=0.4952 | 12.6 batch/s | ETA: 30.7m
+  Batch 11500/34618 (effective: 2875): loss=3.2004, acc=0.4954 | 12.6 batch/s | ETA: 30.6m
+  Batch 11600/34618 (effective: 2900): loss=3.1973, acc=0.4957 | 12.6 batch/s | ETA: 30.5m
+  Batch 11700/34618 (effective: 2925): loss=3.1935, acc=0.4960 | 12.6 batch/s | ETA: 30.3m
+  Batch 11800/34618 (effective: 2950): loss=3.1901, acc=0.4962 | 12.6 batch/s | ETA: 30.2m
+  Batch 11900/34618 (effective: 2975): loss=3.1861, acc=0.4966 | 12.6 batch/s | ETA: 30.1m
+  Batch 12000/34618 (effective: 3000): loss=3.1816, acc=0.4969 | 12.6 batch/s | ETA: 29.9m
+  Batch 12100/34618 (effective: 3025): loss=3.1780, acc=0.4971 | 12.6 batch/s | ETA: 29.8m
+  Batch 12200/34618 (effective: 3050): loss=3.1753, acc=0.4973 | 12.6 batch/s | ETA: 29.7m
+  Batch 12300/34618 (effective: 3075): loss=3.1726, acc=0.4975 | 12.6 batch/s | ETA: 29.5m
+  Batch 12400/34618 (effective: 3100): loss=3.1696, acc=0.4978 | 12.6 batch/s | ETA: 29.4m
+  Batch 12500/34618 (effective: 3125): loss=3.1672, acc=0.4979 | 12.6 batch/s | ETA: 29.3m
+  Batch 12600/34618 (effective: 3150): loss=3.1650, acc=0.4980 | 12.6 batch/s | ETA: 29.2m
+  Batch 12700/34618 (effective: 3175): loss=3.1619, acc=0.4982 | 12.6 batch/s | ETA: 29.0m
+  Batch 12800/34618 (effective: 3200): loss=3.1591, acc=0.4984 | 12.6 batch/s | ETA: 28.9m
+  Batch 12900/34618 (effective: 3225): loss=3.1559, acc=0.4986 | 12.6 batch/s | ETA: 28.8m
+  Batch 13000/34618 (effective: 3250): loss=3.1523, acc=0.4989 | 12.6 batch/s | ETA: 28.6m
+  Batch 13100/34618 (effective: 3275): loss=3.1502, acc=0.4990 | 12.6 batch/s | ETA: 28.5m
+  Batch 13200/34618 (effective: 3300): loss=3.1475, acc=0.4992 | 12.6 batch/s | ETA: 28.4m
+  Batch 13300/34618 (effective: 3325): loss=3.1447, acc=0.4994 | 12.6 batch/s | ETA: 28.2m
+  Batch 13400/34618 (effective: 3350): loss=3.1419, acc=0.4996 | 12.6 batch/s | ETA: 28.1m
+  Batch 13500/34618 (effective: 3375): loss=3.1395, acc=0.4998 | 12.6 batch/s | ETA: 28.0m
+  Batch 13600/34618 (effective: 3400): loss=3.1369, acc=0.5000 | 12.6 batch/s | ETA: 27.8m
+  Batch 13700/34618 (effective: 3425): loss=3.1341, acc=0.5002 | 12.6 batch/s | ETA: 27.7m
+  Batch 13800/34618 (effective: 3450): loss=3.1310, acc=0.5005 | 12.6 batch/s | ETA: 27.6m
+  Batch 13900/34618 (effective: 3475): loss=3.1286, acc=0.5006 | 12.6 batch/s | ETA: 27.4m
+  Batch 14000/34618 (effective: 3500): loss=3.1263, acc=0.5007 | 12.6 batch/s | ETA: 27.3m
+  Batch 14100/34618 (effective: 3525): loss=3.1236, acc=0.5010 | 12.6 batch/s | ETA: 27.1m
+  Batch 14200/34618 (effective: 3550): loss=3.1204, acc=0.5013 | 12.6 batch/s | ETA: 27.0m
+  Batch 14300/34618 (effective: 3575): loss=3.1182, acc=0.5015 | 12.6 batch/s | ETA: 26.9m
+  Batch 14400/34618 (effective: 3600): loss=3.1156, acc=0.5016 | 12.6 batch/s | ETA: 26.8m
+  Batch 14500/34618 (effective: 3625): loss=3.1137, acc=0.5018 | 12.6 batch/s | ETA: 26.6m
+  Batch 14600/34618 (effective: 3650): loss=3.1106, acc=0.5021 | 12.6 batch/s | ETA: 26.5m
+  Batch 14700/34618 (effective: 3675): loss=3.1083, acc=0.5023 | 12.6 batch/s | ETA: 26.4m
+  Batch 14800/34618 (effective: 3700): loss=3.1056, acc=0.5024 | 12.6 batch/s | ETA: 26.2m
+  Batch 14900/34618 (effective: 3725): loss=3.1031, acc=0.5026 | 12.6 batch/s | ETA: 26.1m
+  Batch 15000/34618 (effective: 3750): loss=3.1007, acc=0.5028 | 12.6 batch/s | ETA: 26.0m
+  Batch 15100/34618 (effective: 3775): loss=3.0987, acc=0.5030 | 12.6 batch/s | ETA: 25.8m
+  Batch 15200/34618 (effective: 3800): loss=3.0962, acc=0.5031 | 12.6 batch/s | ETA: 25.7m
+  Batch 15300/34618 (effective: 3825): loss=3.0942, acc=0.5032 | 12.6 batch/s | ETA: 25.6m
+  Batch 15400/34618 (effective: 3850): loss=3.0911, acc=0.5034 | 12.6 batch/s | ETA: 25.4m
+  Batch 15500/34618 (effective: 3875): loss=3.0883, acc=0.5037 | 12.6 batch/s | ETA: 25.3m
+  Batch 15600/34618 (effective: 3900): loss=3.0864, acc=0.5038 | 12.6 batch/s | ETA: 25.2m
+  Batch 15700/34618 (effective: 3925): loss=3.0846, acc=0.5039 | 12.6 batch/s | ETA: 25.1m
+  Batch 15800/34618 (effective: 3950): loss=3.0819, acc=0.5042 | 12.6 batch/s | ETA: 24.9m
+  Batch 15900/34618 (effective: 3975): loss=3.0803, acc=0.5043 | 12.6 batch/s | ETA: 24.8m
+  Batch 16000/34618 (effective: 4000): loss=3.0781, acc=0.5045 | 12.6 batch/s | ETA: 24.7m
+  Batch 16100/34618 (effective: 4025): loss=3.0766, acc=0.5046 | 12.6 batch/s | ETA: 24.5m
+  Batch 16200/34618 (effective: 4050): loss=3.0740, acc=0.5048 | 12.6 batch/s | ETA: 24.4m
+  Batch 16300/34618 (effective: 4075): loss=3.0722, acc=0.5049 | 12.6 batch/s | ETA: 24.2m
+  Batch 16400/34618 (effective: 4100): loss=3.0697, acc=0.5050 | 12.6 batch/s | ETA: 24.1m
+  Batch 16500/34618 (effective: 4125): loss=3.0676, acc=0.5053 | 12.6 batch/s | ETA: 24.0m
+  Batch 16600/34618 (effective: 4150): loss=3.0655, acc=0.5054 | 12.6 batch/s | ETA: 23.8m
+  Batch 16700/34618 (effective: 4175): loss=3.0638, acc=0.5055 | 12.6 batch/s | ETA: 23.7m
+  Batch 16800/34618 (effective: 4200): loss=3.0615, acc=0.5057 | 12.6 batch/s | ETA: 23.6m
+  Batch 16900/34618 (effective: 4225): loss=3.0596, acc=0.5059 | 12.6 batch/s | ETA: 23.5m
+  Batch 17000/34618 (effective: 4250): loss=3.0578, acc=0.5059 | 12.6 batch/s | ETA: 23.3m
+  Batch 17100/34618 (effective: 4275): loss=3.0556, acc=0.5061 | 12.6 batch/s | ETA: 23.2m
+  Batch 17200/34618 (effective: 4300): loss=3.0537, acc=0.5062 | 12.6 batch/s | ETA: 23.1m
+  Batch 17300/34618 (effective: 4325): loss=3.0512, acc=0.5065 | 12.6 batch/s | ETA: 22.9m
+  Batch 17400/34618 (effective: 4350): loss=3.0490, acc=0.5066 | 12.6 batch/s | ETA: 22.8m
+  Batch 17500/34618 (effective: 4375): loss=3.0469, acc=0.5067 | 12.6 batch/s | ETA: 22.7m
+  Batch 17600/34618 (effective: 4400): loss=3.0451, acc=0.5068 | 12.6 batch/s | ETA: 22.5m
+  Batch 17700/34618 (effective: 4425): loss=3.0443, acc=0.5068 | 12.6 batch/s | ETA: 22.4m
+  Batch 17800/34618 (effective: 4450): loss=3.0422, acc=0.5069 | 12.6 batch/s | ETA: 22.3m
+  Batch 17900/34618 (effective: 4475): loss=3.0407, acc=0.5070 | 12.6 batch/s | ETA: 22.1m
+  Batch 18000/34618 (effective: 4500): loss=3.0396, acc=0.5070 | 12.6 batch/s | ETA: 22.0m
+  Batch 18100/34618 (effective: 4525): loss=3.0377, acc=0.5071 | 12.6 batch/s | ETA: 21.9m
+  Batch 18200/34618 (effective: 4550): loss=3.0363, acc=0.5072 | 12.6 batch/s | ETA: 21.7m
+  Batch 18300/34618 (effective: 4575): loss=3.0346, acc=0.5074 | 12.6 batch/s | ETA: 21.6m
+  Batch 18400/34618 (effective: 4600): loss=3.0326, acc=0.5076 | 12.6 batch/s | ETA: 21.5m
+  Batch 18500/34618 (effective: 4625): loss=3.0309, acc=0.5077 | 12.6 batch/s | ETA: 21.3m
+  Batch 18600/34618 (effective: 4650): loss=3.0295, acc=0.5077 | 12.6 batch/s | ETA: 21.2m
+  Batch 18700/34618 (effective: 4675): loss=3.0277, acc=0.5079 | 12.6 batch/s | ETA: 21.1m
+  Batch 18800/34618 (effective: 4700): loss=3.0257, acc=0.5080 | 12.6 batch/s | ETA: 20.9m
+  Batch 18900/34618 (effective: 4725): loss=3.0241, acc=0.5081 | 12.6 batch/s | ETA: 20.8m
+  Batch 19000/34618 (effective: 4750): loss=3.0222, acc=0.5082 | 12.6 batch/s | ETA: 20.7m
+  Batch 19100/34618 (effective: 4775): loss=3.0202, acc=0.5084 | 12.6 batch/s | ETA: 20.5m
+  Batch 19200/34618 (effective: 4800): loss=3.0182, acc=0.5085 | 12.6 batch/s | ETA: 20.4m
+  Batch 19300/34618 (effective: 4825): loss=3.0165, acc=0.5087 | 12.6 batch/s | ETA: 20.3m
+  Batch 19400/34618 (effective: 4850): loss=3.0146, acc=0.5088 | 12.6 batch/s | ETA: 20.1m
+  Batch 19500/34618 (effective: 4875): loss=3.0131, acc=0.5089 | 12.6 batch/s | ETA: 20.0m
+  Batch 19600/34618 (effective: 4900): loss=3.0114, acc=0.5090 | 12.6 batch/s | ETA: 19.9m
+  Batch 19700/34618 (effective: 4925): loss=3.0097, acc=0.5091 | 12.6 batch/s | ETA: 19.7m
+  Batch 19800/34618 (effective: 4950): loss=3.0079, acc=0.5092 | 12.6 batch/s | ETA: 19.6m
+  Batch 19900/34618 (effective: 4975): loss=3.0066, acc=0.5093 | 12.6 batch/s | ETA: 19.5m
+  Batch 20000/34618 (effective: 5000): loss=3.0050, acc=0.5094 | 12.6 batch/s | ETA: 19.3m
+  Batch 20100/34618 (effective: 5025): loss=3.0036, acc=0.5095 | 12.6 batch/s | ETA: 19.2m
+  Batch 20200/34618 (effective: 5050): loss=3.0018, acc=0.5097 | 12.6 batch/s | ETA: 19.1m
+  Batch 20300/34618 (effective: 5075): loss=3.0004, acc=0.5098 | 12.6 batch/s | ETA: 18.9m
+  Batch 20400/34618 (effective: 5100): loss=2.9987, acc=0.5099 | 12.6 batch/s | ETA: 18.8m
+  Batch 20500/34618 (effective: 5125): loss=2.9970, acc=0.5100 | 12.6 batch/s | ETA: 18.7m
+  Batch 20600/34618 (effective: 5150): loss=2.9952, acc=0.5102 | 12.6 batch/s | ETA: 18.5m
+  Batch 20700/34618 (effective: 5175): loss=2.9937, acc=0.5103 | 12.6 batch/s | ETA: 18.4m
+  Batch 20800/34618 (effective: 5200): loss=2.9920, acc=0.5105 | 12.6 batch/s | ETA: 18.3m
+  Batch 20900/34618 (effective: 5225): loss=2.9903, acc=0.5106 | 12.6 batch/s | ETA: 18.1m
+  Batch 21000/34618 (effective: 5250): loss=2.9890, acc=0.5106 | 12.6 batch/s | ETA: 18.0m
+  Batch 21100/34618 (effective: 5275): loss=2.9879, acc=0.5107 | 12.6 batch/s | ETA: 17.9m
+  Batch 21200/34618 (effective: 5300): loss=2.9863, acc=0.5108 | 12.6 batch/s | ETA: 17.7m
+  Batch 21300/34618 (effective: 5325): loss=2.9847, acc=0.5109 | 12.6 batch/s | ETA: 17.6m
+  Batch 21400/34618 (effective: 5350): loss=2.9829, acc=0.5111 | 12.6 batch/s | ETA: 17.5m
+  Batch 21500/34618 (effective: 5375): loss=2.9814, acc=0.5112 | 12.6 batch/s | ETA: 17.3m
+  Batch 21600/34618 (effective: 5400): loss=2.9802, acc=0.5113 | 12.6 batch/s | ETA: 17.2m
+  Batch 21700/34618 (effective: 5425): loss=2.9784, acc=0.5114 | 12.6 batch/s | ETA: 17.1m
+  Batch 21800/34618 (effective: 5450): loss=2.9773, acc=0.5115 | 12.6 batch/s | ETA: 17.0m
+  Batch 21900/34618 (effective: 5475): loss=2.9760, acc=0.5115 | 12.6 batch/s | ETA: 16.9m
+  Batch 22000/34618 (effective: 5500): loss=2.9750, acc=0.5116 | 12.6 batch/s | ETA: 16.7m
+  Batch 22100/34618 (effective: 5525): loss=2.9736, acc=0.5117 | 12.6 batch/s | ETA: 16.6m
+  Batch 22200/34618 (effective: 5550): loss=2.9722, acc=0.5117 | 12.6 batch/s | ETA: 16.5m
+  Batch 22300/34618 (effective: 5575): loss=2.9709, acc=0.5118 | 12.6 batch/s | ETA: 16.3m
+  Batch 22400/34618 (effective: 5600): loss=2.9693, acc=0.5120 | 12.6 batch/s | ETA: 16.2m
+  Batch 22500/34618 (effective: 5625): loss=2.9680, acc=0.5121 | 12.6 batch/s | ETA: 16.1m
+  Batch 22600/34618 (effective: 5650): loss=2.9659, acc=0.5123 | 12.6 batch/s | ETA: 15.9m
+  Batch 22700/34618 (effective: 5675): loss=2.9645, acc=0.5124 | 12.6 batch/s | ETA: 15.8m
+  Batch 22800/34618 (effective: 5700): loss=2.9633, acc=0.5125 | 12.6 batch/s | ETA: 15.7m
+  Batch 22900/34618 (effective: 5725): loss=2.9622, acc=0.5126 | 12.6 batch/s | ETA: 15.5m
+  Batch 23000/34618 (effective: 5750): loss=2.9609, acc=0.5127 | 12.6 batch/s | ETA: 15.4m
+  Batch 23100/34618 (effective: 5775): loss=2.9595, acc=0.5128 | 12.6 batch/s | ETA: 15.3m
+  Batch 23200/34618 (effective: 5800): loss=2.9578, acc=0.5129 | 12.6 batch/s | ETA: 15.1m
+  Batch 23300/34618 (effective: 5825): loss=2.9569, acc=0.5130 | 12.6 batch/s | ETA: 15.0m
+  Batch 23400/34618 (effective: 5850): loss=2.9557, acc=0.5130 | 12.6 batch/s | ETA: 14.8m
+  Batch 23500/34618 (effective: 5875): loss=2.9537, acc=0.5132 | 12.6 batch/s | ETA: 14.7m
+  Batch 23600/34618 (effective: 5900): loss=2.9527, acc=0.5133 | 12.6 batch/s | ETA: 14.6m
+  Batch 23700/34618 (effective: 5925): loss=2.9518, acc=0.5133 | 12.6 batch/s | ETA: 14.4m
+  Batch 23800/34618 (effective: 5950): loss=2.9508, acc=0.5134 | 12.6 batch/s | ETA: 14.3m
+  Batch 23900/34618 (effective: 5975): loss=2.9494, acc=0.5135 | 12.6 batch/s | ETA: 14.2m
+  Batch 24000/34618 (effective: 6000): loss=2.9479, acc=0.5136 | 12.6 batch/s | ETA: 14.0m
+  Batch 24100/34618 (effective: 6025): loss=2.9465, acc=0.5137 | 12.6 batch/s | ETA: 13.9m
+  Batch 24200/34618 (effective: 6050): loss=2.9456, acc=0.5138 | 12.6 batch/s | ETA: 13.8m
+  Batch 24300/34618 (effective: 6075): loss=2.9446, acc=0.5138 | 12.6 batch/s | ETA: 13.7m
+  Batch 24400/34618 (effective: 6100): loss=2.9433, acc=0.5140 | 12.6 batch/s | ETA: 13.5m
+  Batch 24500/34618 (effective: 6125): loss=2.9419, acc=0.5140 | 12.6 batch/s | ETA: 13.4m
+  Batch 24600/34618 (effective: 6150): loss=2.9410, acc=0.5141 | 12.6 batch/s | ETA: 13.3m
+  Batch 24700/34618 (effective: 6175): loss=2.9396, acc=0.5142 | 12.6 batch/s | ETA: 13.1m
+  Batch 24800/34618 (effective: 6200): loss=2.9383, acc=0.5143 | 12.6 batch/s | ETA: 13.0m
+  Batch 24900/34618 (effective: 6225): loss=2.9364, acc=0.5144 | 12.6 batch/s | ETA: 12.9m
+  Batch 25000/34618 (effective: 6250): loss=2.9350, acc=0.5146 | 12.6 batch/s | ETA: 12.7m
+  Batch 25100/34618 (effective: 6275): loss=2.9337, acc=0.5147 | 12.6 batch/s | ETA: 12.6m
+  Batch 25200/34618 (effective: 6300): loss=2.9327, acc=0.5147 | 12.6 batch/s | ETA: 12.5m
+  Batch 25300/34618 (effective: 6325): loss=2.9321, acc=0.5148 | 12.6 batch/s | ETA: 12.3m
+  Batch 25400/34618 (effective: 6350): loss=2.9306, acc=0.5149 | 12.6 batch/s | ETA: 12.2m
+  Batch 25500/34618 (effective: 6375): loss=2.9292, acc=0.5150 | 12.6 batch/s | ETA: 12.1m
+  Batch 25600/34618 (effective: 6400): loss=2.9284, acc=0.5151 | 12.6 batch/s | ETA: 11.9m
+  Batch 25700/34618 (effective: 6425): loss=2.9274, acc=0.5152 | 12.6 batch/s | ETA: 11.8m
+  Batch 25800/34618 (effective: 6450): loss=2.9261, acc=0.5153 | 12.6 batch/s | ETA: 11.7m
+  Batch 25900/34618 (effective: 6475): loss=2.9250, acc=0.5154 | 12.6 batch/s | ETA: 11.5m
+  Batch 26000/34618 (effective: 6500): loss=2.9239, acc=0.5155 | 12.6 batch/s | ETA: 11.4m
+  Batch 26100/34618 (effective: 6525): loss=2.9227, acc=0.5156 | 12.6 batch/s | ETA: 11.3m
+  Batch 26200/34618 (effective: 6550): loss=2.9215, acc=0.5157 | 12.6 batch/s | ETA: 11.1m
+  Batch 26300/34618 (effective: 6575): loss=2.9206, acc=0.5157 | 12.6 batch/s | ETA: 11.0m
+  Batch 26400/34618 (effective: 6600): loss=2.9195, acc=0.5158 | 12.6 batch/s | ETA: 10.9m
+  Batch 26500/34618 (effective: 6625): loss=2.9183, acc=0.5158 | 12.6 batch/s | ETA: 10.7m
+  Batch 26600/34618 (effective: 6650): loss=2.9175, acc=0.5159 | 12.6 batch/s | ETA: 10.6m
+  Batch 26700/34618 (effective: 6675): loss=2.9166, acc=0.5159 | 12.6 batch/s | ETA: 10.5m
+  Batch 26800/34618 (effective: 6700): loss=2.9157, acc=0.5160 | 12.6 batch/s | ETA: 10.4m
+  Batch 26900/34618 (effective: 6725): loss=2.9145, acc=0.5161 | 12.6 batch/s | ETA: 10.2m
+  Batch 27000/34618 (effective: 6750): loss=2.9133, acc=0.5162 | 12.6 batch/s | ETA: 10.1m
+  Batch 27100/34618 (effective: 6775): loss=2.9122, acc=0.5163 | 12.6 batch/s | ETA: 10.0m
+  Batch 27200/34618 (effective: 6800): loss=2.9109, acc=0.5164 | 12.6 batch/s | ETA: 9.8m
+  Batch 27300/34618 (effective: 6825): loss=2.9097, acc=0.5165 | 12.6 batch/s | ETA: 9.7m
+  Batch 27400/34618 (effective: 6850): loss=2.9086, acc=0.5166 | 12.6 batch/s | ETA: 9.6m
+  Batch 27500/34618 (effective: 6875): loss=2.9075, acc=0.5166 | 12.6 batch/s | ETA: 9.4m
+  Batch 27600/34618 (effective: 6900): loss=2.9066, acc=0.5166 | 12.6 batch/s | ETA: 9.3m
+  Batch 27700/34618 (effective: 6925): loss=2.9054, acc=0.5167 | 12.6 batch/s | ETA: 9.2m
+  Batch 27800/34618 (effective: 6950): loss=2.9046, acc=0.5168 | 12.6 batch/s | ETA: 9.0m
+  Batch 27900/34618 (effective: 6975): loss=2.9033, acc=0.5169 | 12.6 batch/s | ETA: 8.9m
+  Batch 28000/34618 (effective: 7000): loss=2.9024, acc=0.5169 | 12.6 batch/s | ETA: 8.8m
+  Batch 28100/34618 (effective: 7025): loss=2.9018, acc=0.5170 | 12.6 batch/s | ETA: 8.6m
+  Batch 28200/34618 (effective: 7050): loss=2.9011, acc=0.5170 | 12.6 batch/s | ETA: 8.5m
+  Batch 28300/34618 (effective: 7075): loss=2.9001, acc=0.5170 | 12.6 batch/s | ETA: 8.4m
+  Batch 28400/34618 (effective: 7100): loss=2.8989, acc=0.5172 | 12.6 batch/s | ETA: 8.2m
+  Batch 28500/34618 (effective: 7125): loss=2.8975, acc=0.5173 | 12.6 batch/s | ETA: 8.1m
+  Batch 28600/34618 (effective: 7150): loss=2.8964, acc=0.5173 | 12.6 batch/s | ETA: 8.0m
+  Batch 28700/34618 (effective: 7175): loss=2.8950, acc=0.5175 | 12.6 batch/s | ETA: 7.8m
+  Batch 28800/34618 (effective: 7200): loss=2.8941, acc=0.5175 | 12.6 batch/s | ETA: 7.7m
+  Batch 28900/34618 (effective: 7225): loss=2.8930, acc=0.5176 | 12.6 batch/s | ETA: 7.6m
+  Batch 29000/34618 (effective: 7250): loss=2.8921, acc=0.5177 | 12.6 batch/s | ETA: 7.4m
+  Batch 29100/34618 (effective: 7275): loss=2.8909, acc=0.5178 | 12.6 batch/s | ETA: 7.3m
+  Batch 29200/34618 (effective: 7300): loss=2.8898, acc=0.5179 | 12.6 batch/s | ETA: 7.2m
+  Batch 29300/34618 (effective: 7325): loss=2.8887, acc=0.5180 | 12.6 batch/s | ETA: 7.0m
+  Batch 29400/34618 (effective: 7350): loss=2.8876, acc=0.5180 | 12.6 batch/s | ETA: 6.9m
+  Batch 29500/34618 (effective: 7375): loss=2.8864, acc=0.5181 | 12.6 batch/s | ETA: 6.8m
+  Batch 29600/34618 (effective: 7400): loss=2.8855, acc=0.5182 | 12.6 batch/s | ETA: 6.6m
+  Batch 29700/34618 (effective: 7425): loss=2.8845, acc=0.5182 | 12.6 batch/s | ETA: 6.5m
+  Batch 29800/34618 (effective: 7450): loss=2.8835, acc=0.5183 | 12.6 batch/s | ETA: 6.4m
+  Batch 29900/34618 (effective: 7475): loss=2.8829, acc=0.5183 | 12.6 batch/s | ETA: 6.3m
+  Batch 30000/34618 (effective: 7500): loss=2.8820, acc=0.5184 | 12.6 batch/s | ETA: 6.1m
+  Batch 30100/34618 (effective: 7525): loss=2.8813, acc=0.5184 | 12.6 batch/s | ETA: 6.0m
+  Batch 30200/34618 (effective: 7550): loss=2.8804, acc=0.5185 | 12.6 batch/s | ETA: 5.9m
+  Batch 30300/34618 (effective: 7575): loss=2.8795, acc=0.5185 | 12.6 batch/s | ETA: 5.7m
+  Batch 30400/34618 (effective: 7600): loss=2.8785, acc=0.5186 | 12.6 batch/s | ETA: 5.6m
+  Batch 30500/34618 (effective: 7625): loss=2.8776, acc=0.5187 | 12.6 batch/s | ETA: 5.5m
+  Batch 30600/34618 (effective: 7650): loss=2.8765, acc=0.5188 | 12.6 batch/s | ETA: 5.3m
+  Batch 30700/34618 (effective: 7675): loss=2.8757, acc=0.5188 | 12.6 batch/s | ETA: 5.2m
+  Batch 30800/34618 (effective: 7700): loss=2.8749, acc=0.5188 | 12.6 batch/s | ETA: 5.1m
+  Batch 30900/34618 (effective: 7725): loss=2.8737, acc=0.5190 | 12.6 batch/s | ETA: 4.9m
+  Batch 31000/34618 (effective: 7750): loss=2.8729, acc=0.5190 | 12.6 batch/s | ETA: 4.8m
+  Batch 31100/34618 (effective: 7775): loss=2.8716, acc=0.5191 | 12.6 batch/s | ETA: 4.7m
+  Batch 31200/34618 (effective: 7800): loss=2.8707, acc=0.5192 | 12.6 batch/s | ETA: 4.5m
+  Batch 31300/34618 (effective: 7825): loss=2.8702, acc=0.5192 | 12.6 batch/s | ETA: 4.4m
+  Batch 31400/34618 (effective: 7850): loss=2.8694, acc=0.5193 | 12.6 batch/s | ETA: 4.3m
+  Batch 31500/34618 (effective: 7875): loss=2.8688, acc=0.5193 | 12.6 batch/s | ETA: 4.1m
+  Batch 31600/34618 (effective: 7900): loss=2.8678, acc=0.5194 | 12.6 batch/s | ETA: 4.0m
+  Batch 31700/34618 (effective: 7925): loss=2.8668, acc=0.5194 | 12.6 batch/s | ETA: 3.9m
+  Batch 31800/34618 (effective: 7950): loss=2.8657, acc=0.5195 | 12.6 batch/s | ETA: 3.7m
+  Batch 31900/34618 (effective: 7975): loss=2.8651, acc=0.5196 | 12.6 batch/s | ETA: 3.6m
+  Batch 32000/34618 (effective: 8000): loss=2.8643, acc=0.5196 | 12.6 batch/s | ETA: 3.5m
+  Batch 32100/34618 (effective: 8025): loss=2.8635, acc=0.5197 | 12.6 batch/s | ETA: 3.3m
+  Batch 32200/34618 (effective: 8050): loss=2.8627, acc=0.5197 | 12.6 batch/s | ETA: 3.2m
+  Batch 32300/34618 (effective: 8075): loss=2.8619, acc=0.5198 | 12.6 batch/s | ETA: 3.1m
+  Batch 32400/34618 (effective: 8100): loss=2.8611, acc=0.5198 | 12.6 batch/s | ETA: 2.9m
+  Batch 32500/34618 (effective: 8125): loss=2.8601, acc=0.5199 | 12.6 batch/s | ETA: 2.8m
+  Batch 32600/34618 (effective: 8150): loss=2.8594, acc=0.5200 | 12.6 batch/s | ETA: 2.7m
+  Batch 32700/34618 (effective: 8175): loss=2.8583, acc=0.5200 | 12.6 batch/s | ETA: 2.5m
+  Batch 32800/34618 (effective: 8200): loss=2.8576, acc=0.5201 | 12.6 batch/s | ETA: 2.4m
+  Batch 32900/34618 (effective: 8225): loss=2.8569, acc=0.5201 | 12.6 batch/s | ETA: 2.3m
+  Batch 33000/34618 (effective: 8250): loss=2.8557, acc=0.5202 | 12.6 batch/s | ETA: 2.1m
+  Batch 33100/34618 (effective: 8275): loss=2.8550, acc=0.5202 | 12.6 batch/s | ETA: 2.0m
+  Batch 33200/34618 (effective: 8300): loss=2.8540, acc=0.5203 | 12.6 batch/s | ETA: 1.9m
+  Batch 33300/34618 (effective: 8325): loss=2.8531, acc=0.5204 | 12.6 batch/s | ETA: 1.7m
+  Batch 33400/34618 (effective: 8350): loss=2.8520, acc=0.5204 | 12.6 batch/s | ETA: 1.6m
+  Batch 33500/34618 (effective: 8375): loss=2.8514, acc=0.5205 | 12.6 batch/s | ETA: 1.5m
+  Batch 33600/34618 (effective: 8400): loss=2.8505, acc=0.5205 | 12.6 batch/s | ETA: 1.3m
+  Batch 33700/34618 (effective: 8425): loss=2.8494, acc=0.5206 | 12.6 batch/s | ETA: 1.2m
+  Batch 33800/34618 (effective: 8450): loss=2.8483, acc=0.5207 | 12.6 batch/s | ETA: 1.1m
+  Batch 33900/34618 (effective: 8475): loss=2.8474, acc=0.5208 | 12.6 batch/s | ETA: 1.0m
+  Batch 34000/34618 (effective: 8500): loss=2.8461, acc=0.5209 | 12.6 batch/s | ETA: 0.8m
+  Batch 34100/34618 (effective: 8525): loss=2.8451, acc=0.5209 | 12.6 batch/s | ETA: 0.7m
+  Batch 34200/34618 (effective: 8550): loss=2.8442, acc=0.5210 | 12.6 batch/s | ETA: 0.6m
+  Batch 34300/34618 (effective: 8575): loss=2.8435, acc=0.5210 | 12.6 batch/s | ETA: 0.4m
+  Batch 34400/34618 (effective: 8600): loss=2.8424, acc=0.5211 | 12.6 batch/s | ETA: 0.3m
+  Batch 34500/34618 (effective: 8625): loss=2.8417, acc=0.5212 | 12.6 batch/s | ETA: 0.2m
+  Batch 34600/34618 (effective: 8650): loss=2.8407, acc=0.5212 | 12.6 batch/s | ETA: 0.0m
+
+Epoch 0: train_loss=2.8407, train_acc=0.5212 (took 135.6m, 0.24s/batch)
+Epoch 0: val_loss=2.5303, val_acc=0.5460
+✓ New best model saved (val_loss=2.5303)
+
