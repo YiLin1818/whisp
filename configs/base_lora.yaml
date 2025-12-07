@@ -1,0 +1,18 @@
+# configs/base_lora.yaml
+MODEL:
+  BASE: null        # will be overridden
+
+LORA:
+  RANK: null
+  ALPHA: null
+  DROPOUT: 0.05
+  BLOCK_INDICES: null
+
+TRAIN_DATASETS: []
+VALIDATION_DATASETS: []
+
+TRAINER:
+  MAX_EPOCHS: 3
+  LR: 0.0003
+  BATCH_SIZE: 4
+  DEVICE: cuda
