@@ -20,3 +20,9 @@ thumbs.db
 .DS_Store
 .idea
 
+# Local env and virtual envs
+.venv/
+venv/
+.env
+.env.*
+
