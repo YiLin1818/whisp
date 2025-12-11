@@ -12,7 +12,11 @@ import numpy as np
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
-from my_whisper.dataset_parsers.asr_alignment.parser import load_asr_alignment_split
+# Support both installed package name `my_whisper` and local repo imports
+try:
+    from my_whisper.dataset_parsers.asr_alignment.parser import load_asr_alignment_split  # type: ignore
+except ModuleNotFoundError:
+    from dataset_parsers.asr_alignment.parser import load_asr_alignment_split
 
 # Global dims - no need to load full model
 # Global dims - no need to load full model
