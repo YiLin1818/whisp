@@ -1,0 +1,4 @@
+nemo_toolkit[tts]
+soundfile
+torch
+
