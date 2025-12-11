@@ -35,9 +35,9 @@ def build_model(
     checkpoint_path: str,
     device: str | torch.device = "cuda",
     block_indices: List[int] | None = None,
-    rank: int = 128,
-    alpha: int = 256,
-    dropout: float = 0.05,
+    rank: int = 64,
+    alpha: int = 128,
+    dropout: float = 0.0,
 ) -> tuple[LoRAWhisper, object]:
     set_whisper_dims(base_model)
     tokenizer = get_whisper_tokenizer()
@@ -88,6 +88,10 @@ def run_speech_to_speech(
     batch_size: int = 1,
     device: str | torch.device | None = None,
     output_dir: str = "audio_to_audio_outputs",
+    rank: int = 64,
+    alpha: int = 128,
+    dropout: float = 0.0,
+    block_indices: List[int] | None = None,
 ) -> List[Dict]:
     """
     Main entry point. Returns a list of dicts with text + audio paths.
@@ -96,7 +100,15 @@ def run_speech_to_speech(
     os.makedirs(output_dir, exist_ok=True)
 
     ckpt = download_checkpoint(hf_repo, hf_filename, checkpoint_path)
-    model, tokenizer = build_model(base_model, ckpt, device=device)
+    model, tokenizer = build_model(
+        base_model,
+        ckpt,
+        device=device,
+        block_indices=block_indices,
+        rank=rank,
+        alpha=alpha,
+        dropout=dropout,
+    )
     tts = TTSEngine(device=device)
 
     loader = create_dataloader(
