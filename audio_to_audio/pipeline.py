@@ -88,6 +88,7 @@ def run_speech_to_speech(
     batch_size: int = 1,
     device: str | torch.device | None = None,
     output_dir: str = "audio_to_audio_outputs",
+    target_output_dir: str = "audio_to_audio_target",
     rank: int = 64,
     alpha: int = 128,
     dropout: float = 0.0,
@@ -98,6 +99,7 @@ def run_speech_to_speech(
     """
     device = device or ("cuda" if torch.cuda.is_available() else "cpu")
     os.makedirs(output_dir, exist_ok=True)
+    os.makedirs(target_output_dir, exist_ok=True)
 
     ckpt = download_checkpoint(hf_repo, hf_filename, checkpoint_path)
     model, tokenizer = build_model(
@@ -114,7 +116,7 @@ def run_speech_to_speech(
     loader = create_dataloader(
         datasets_cfg=[{"name": dataset_subset, "split": dataset_split}],
         batch_size=batch_size,
-        shuffle=False,
+        shuffle=True,
         num_workers=2,
     )
 
@@ -130,16 +132,20 @@ def run_speech_to_speech(
             audio_path = os.path.join(output_dir, f"sample_{idx:05d}.wav")
             tts.synthesize(predicted_text, out_path=audio_path)
 
+            target_audio_path = os.path.join(target_output_dir, f"sample_{idx:05d}.wav")
+            tts.synthesize(target_text, out_path=target_audio_path)
+
             result = {
                 "idx": idx,
                 "predicted_text": predicted_text,
                 "target_text": target_text,
                 "tts_audio": audio_path,
+                "target_tts_audio": target_audio_path,
             }
             results.append(result)
 
             print(
-                f"[{idx}] target='{target_text}' | predicted='{predicted_text}' → {audio_path}"
+                f"[{idx}] target='{target_text}' | predicted='{predicted_text}' → pred:{audio_path} target:{target_audio_path}"
             )
 
     return results
