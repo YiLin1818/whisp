@@ -1,0 +1,29 @@
+run_name: commonvoice_tiny_lora_r8_a16
+model_name: openai/whisper-tiny.en
+dataset:
+  type: commonvoice_local
+  train_manifest: data/commonvoice_en/train_small.jsonl
+  val_manifest: data/commonvoice_en/val_small.jsonl
+
+train:
+  output_dir: outputs/runs/commonvoice_tiny_lora_r8_a16
+  learning_rate: 5.0e-5
+  per_device_train_batch_size: 1
+  per_device_eval_batch_size: 1
+  gradient_accumulation_steps: 4
+  num_train_epochs: 8
+  warmup_steps: 500
+  fp16: true
+  gradient_checkpointing: false
+  eval_strategy: epoch
+  save_strategy: epoch
+  logging_steps: 50
+  save_total_limit: 2
+  predict_with_generate: true
+  generation_num_beams: 5
+
+lora:
+  r: 8
+  alpha: 16
+  dropout: 0.1
+  target_modules: ["q_proj", "k_proj", "v_proj", "out_proj"]
